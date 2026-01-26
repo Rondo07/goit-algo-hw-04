@@ -23,6 +23,12 @@ def show_all(contacts):
         contact_list.append(f"{name}: {phone}")   # Add contact to list
     return contact_list
 
+def all_contacts(args, contacts):
+    contact_list = show_all(contacts)
+    if not contact_list:
+        return "No contacts"
+    return "\n".join(contact_list)
+
 def change_contact(args, contacts):
     name, phone = args   # Unpack name and new phone number
     if name in contacts:   # Update phone if contact exists
@@ -48,11 +54,7 @@ def main():
         elif command == "phone":   # Command to show phone
             print(show_phone(args, contacts))
         elif command == "all":   # Command to show all contacts
-            contact_list = show_all(contacts)
-            if not contact_list:
-                print("No contacts")
-            else:
-                print("\n".join(contact_list))
+            print(all_contacts(args, contacts))
         elif command == "change":   # Command to change phone
             print(change_contact(args, contacts))
         else:
