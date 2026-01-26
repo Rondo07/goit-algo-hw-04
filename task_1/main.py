@@ -19,13 +19,13 @@ def total_salary(path):   # Create function
                 try:
                     line = line.split(',')   # Split the line by comma
                     salary_part = line[1].strip()   # Remove leading and trailing whitespace
-                    salary = int(salary_part)
+                    salary = float(salary_part)
                 except(IndexError, ValueError):   # Manage an exception, skip wrong lines
                     continue
                 total +=salary
                 count +=1
         if count > 0:   # Avoid division by zero
-            average = total // count
+            average = total / count
         else:
             average = 0
     except FileNotFoundError:   # Manage FileNotFoundError exception, print message
